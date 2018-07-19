@@ -1,7 +1,3 @@
-
-#include "vectorutils.h";
-
-
 // Defines the representation of a cell as well as a sphere struct
 // to represent the spheres placed in each cell for the purpose of computing overlap
 
@@ -16,10 +12,10 @@ typedef struct _sphere {
 
 typedef struct _sphereMesh {
     sphere* centerSphere;
-    sphere* fociOneSphere;
-    sphere* fociTwoSphere;
-    sphere* middleOneSphere;
-    sphere* middleTwoSphere;
+    sphere* fociSphereOne;
+    sphere* fociSphereTwo;
+    sphere* middleSphereOne;
+    sphere* middleSphereTwo;
 } sphereMesh;
 
 typedef struct _cell {
@@ -52,12 +48,14 @@ typedef struct _cell {
 
 // a "constructor" for cell structs
 
-cell* construct_cell(float* axis, float* pos, float length, float diameter, int generation, cell* parent);
-void fill_spheremesh(cell* cel);
-void cleanup_cell(cell* cel);
+cell* constructCell(vector* axis, vector* pos, float length, float diameter, int generation, cell* parent);
+
+void fillSpheremesh(cell* cel);
+
+void cleanupCell(cell* cel);
+
+void cleanupSpheremesh(sphereMesh* sphereMesh);
+
 int overlaps(cell* cellOne, cell* cellTwo, float overlapAmnt);
-
-
-
 
 

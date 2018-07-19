@@ -5,7 +5,6 @@
 #include <math.h>
 
 
-
 #include "vectorutils.h"
 
 
@@ -32,7 +31,7 @@
 // returns the real numbered dot product of 2 length-3 vectors
 // 
 
-float dot_product(vector* vec1, vector* vec2) {
+float dotProduct(vector* vec1, vector* vec2) {
 
     float dotProduct = (vec1->x * vec2->x) + (vec1->y * vec2->y) + (vec1->z * vec2->z);
     return dotProduct;
@@ -43,15 +42,17 @@ float dot_product(vector* vec1, vector* vec2) {
 // as another length-3 real numbered vector
 // WARNING: returns malloced memory, must free
 
-void cross_product(vector* dstVec, vector* vec1, vector* vec2) {
+void crossProduct(vector* dstVec, vector* vec1, vector* vec2) {
     dstVec->x = ( vec1->y * vec2->z - vec1->z * vec2->y );
     dstVec->y = ( vec1->z * vec2->x - vec1->x * vec2->z );
     dstVec->z = ( vec1->x * vec2->y - vec1->y * vec2->x );
 }
 
 
+#include vectorutils.h
+
 // constructs a 3D vector
-void vector(vector* vec, float xVal, float yVal, float zVal) {
+void makeVector(vector* vec, float xVal, float yVal, float zVal) {
     vec->x = xVal;
     vec->y = yVal;
     vec->z = zVal;
@@ -59,7 +60,7 @@ void vector(vector* vec, float xVal, float yVal, float zVal) {
 
 
 // puts the result of scaleFactor * vector into dstVec
-void scalar_multiply(vector* dstVec, float scaleFactor, vector* vector) {
+void scalarMultiply(vector* dstVec, float scaleFactor, vector* vector) {
     dstVec->x = scaleFactor * vector->x;
     dstVec->y = scaleFactor * vector->y;
     dstVec->z = scaleFactor * vector->z;
@@ -69,7 +70,7 @@ void scalar_multiply(vector* dstVec, float scaleFactor, vector* vector) {
 // compute the norm of vector (length 1.0 vector pointing in same direction as orginal)
 // and store the result in the memory pointed to by dstVec
 void norm(vector* dstVec, vector* vector) {
-    float magnitude = vector_magnitude(vector);
+    float magnitude = vectorMagnitude(vector);
     float coefficient = 1.0 / magnitude;
     scalar_multiply(dstVec, coefficient, vector);
 }
@@ -87,7 +88,7 @@ float magnitude(vector* vec) {
 
 // puts the result of vec1 + vec2 in
 // dstVec
-void vector_add(vector* dstVec, vector* vec1, vector* vec2) {
+void vectorAdd(vector* dstVec, vector* vec1, vector* vec2) {
     dstVec->x = vec1->x + vec2->x;
     dstVec->y = vec1->y + vec2->y;
     dstVec->z = vec1->z + vec2->z;
@@ -96,7 +97,7 @@ void vector_add(vector* dstVec, vector* vec1, vector* vec2) {
 
 // puts the result of vec1 - vec2 into
 // dstVec
-void vector_subtract(vector* dstVec, vector* vec1, vector* vec2) {
+void vectorSubtract(vector* dstVec, vector* vec1, vector* vec2) {
     dstVec->x = vec1->x - vec2->x;
     dstVec->y = vec1->y - vec2->y;
     dstVec->z = vec1->z - vec2->z;

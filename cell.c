@@ -107,10 +107,18 @@ void fill_spheremesh(cell* cel) {
     float fociDistance = sqrt( pow( cel->length / 2.0, 2.0 ) - pow(cel->diameter / 2.0, 2.0) );
     vector* normedCellAxis;
     norm(normedCellAxis, cel->axis);
-    vector* 
+    vector* fociOnePos = vector_add(cel->pos;
     // fociOnePos = pos + ( fociDistance * norm(self.axis) )
 
 
 }
 
 void position_foci_spheres(vector* fociOne, vector* fociTwo,)
+
+
+
+
+
+
+
+
